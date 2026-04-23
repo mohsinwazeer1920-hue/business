@@ -1,0 +1,323 @@
+
+/* =====================================
+   DESKTOP — hide mobile-only elements
+   ===================================== */
+@media (min-width: 992px) {
+  #mobile {
+    display: none !important;
+  }
+  #close {
+    display: none !important;
+  }
+  .nav-logo {
+    display: none !important;
+  }
+}
+ 
+/* =====================================
+   1️⃣ VERY SMALL PHONES (iPhone SE etc)
+   ===================================== */
+@media (max-width: 375px) {
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  #hero {
+    height: 50vh;
+    padding: 0 15px;
+  }
+}
+ 
+/* =====================================
+   2️⃣ SMALL PHONES (up to 480px)
+   ===================================== */
+@media (max-width: 480px) {
+  .section-p1 {
+    padding: 20px 15px;
+  }
+  #feature .fe-box {
+    width: 100%;
+  }
+  #product1 .pro {
+    width: 100%;
+  }
+  #newsLetter {
+    flex-direction: column;
+    text-align: center;
+  }
+  #newsLetter .form {
+    width: 100%;
+    margin-top: 15px;
+  }
+  #banner3 {
+    padding: 0 15px;
+    flex-direction: column;
+  }
+  #banner3 .banner-box {
+    min-width: 100%;
+    width: 100%;
+    height: 35vh;
+    margin-bottom: 10px;
+  }
+  #blog { padding: 90px 15px 0 15px; }
+  #blog .blog-box { padding-bottom: 60px; }
+  #blog img { height: 200px; }
+  #blog .blog-details h4 { font-size: 18px; }
+  #blog .blog-details p { font-size: 14px; line-height: 22px; }
+  #blog .blog-details a { font-size: 10px; }
+  #blog .blog-details a::after { width: 35px; right: -45px; }
+  #blog .blog-box h1 { font-size: 40px; top: -25px; }
+}
+ 
+/* =====================================
+   3️⃣ PHONES (up to 600px)
+   ===================================== */
+@media (max-width: 600px) {
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  #hero { height: 55vh; }
+  #sm-banner { flex-direction: column; }
+  #banner3 {
+    flex-direction: column;
+    padding: 0 15px;
+  }
+  #banner3 .banner-box {
+    min-width: 100%;
+    width: 100%;
+    height: 38vh;
+    margin-bottom: 10px;
+  }
+}
+ 
+/* =====================================
+   4️⃣ TABLETS (up to 768px)
+   ===================================== */
+@media (max-width: 768px) {
+  #header { padding: 15px 25px; }
+  #feature { justify-content: center; gap: 15px; }
+  #feature .fe-box { width: 45%; }
+  footer { flex-direction: column; }
+  #banner3 {
+    flex-direction: column;
+    padding: 0 30px;
+  }
+  #banner3 .banner-box {
+    min-width: 100%;
+    width: 100%;
+    height: 40vh;
+    margin-bottom: 15px;
+  }
+  #blog { padding: 100px 30px 0 30px; }
+  #blog .blog-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 70px;
+  }
+  #blog .blog-img,
+  #blog .blog-details {
+    width: 100%;
+    margin-right: 0;
+  }
+  #blog img { height: 250px; }
+  #blog .blog-box h1 { font-size: 50px; top: -30px; }
+}
+ 
+/* =====================================
+   5️⃣ LARGE TABLETS (up to 1024px)
+   ===================================== */
+@media (max-width: 1024px) {
+  .section-p1 { padding: 40px; }
+  #hero { height: 60vh; }
+  #product1 .pro-container { justify-content: center; }
+  #product1 .pro { margin: 15px; }
+  #sm-banner .banner-box { min-width: 100%; height: 40vh; }
+  #banner3 { padding: 0 40px; }
+  #banner3 .banner-box { min-width: 48%; height: 45vh; }
+  #blog { padding: 120px 60px 0 60px; }
+  #blog .blog-box h1 { font-size: 60px; }
+}
+ 
+/* =====================================
+   6️⃣ LAPTOPS (up to 1280px)
+   ===================================== */
+@media (max-width: 1280px) {
+  #header { padding: 20px 50px; }
+  #hero { padding: 0 50px; }
+  #banner3 { padding: 0 50px; }
+  #banner3 .banner-box { min-width: 30%; }
+}
+ 
+/* =====================================
+   7️⃣ LARGE SCREENS (1440px+)
+   ===================================== */
+@media (min-width: 1440px) {
+  body {
+    max-width: 1400px;
+    margin: auto;
+  }
+}
+ 
+/* =============================================
+   8️⃣ MOBILE NAVBAR — PROPER FULLSCREEN MENU
+   ============================================= */
+@media (max-width: 991px) {
+ 
+  body {
+    overflow-x: hidden;
+  }
+ 
+  /* --- Header bar --- */
+  #header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 14px 20px !important;
+    position: relative;
+    flex-wrap: nowrap !important;
+  }
+ 
+  /* Hide search & sort in header on mobile */
+  #header .search-box,
+  #header .sort-container {
+    display: none !important;
+  }
+ 
+  /* The div wrapping ul#navbar — make it not affect layout */
+  #header > div:not(#mobile) {
+    position: static;
+    margin: 0;
+    padding: 0;
+  }
+ 
+  /* ---- FULLSCREEN SLIDE-IN NAVBAR ---- */
+  #navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+ 
+    width: 100vw !important;
+    height: 100vh !important;
+ 
+    background: #ffffff !important;
+ 
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+ 
+    transform: translateX(-100%) !important;
+    transition: transform 0.38s cubic-bezier(0.77, 0, 0.175, 1) !important;
+    z-index: 9999 !important;
+    overflow-y: auto;
+    list-style: none;
+  }
+ 
+  #navbar.active {
+    transform: translateX(0) !important;
+  }
+ 
+  /* Logo at top of navbar */
+  #navbar .nav-logo {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    padding: 50px 0 30px 0;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 10px;
+  }
+ 
+  #navbar .nav-logo img {
+    width: 140px !important;
+  }
+ 
+  /* Each nav item */
+  #navbar li {
+    width: 100%;
+    text-align: center;
+    padding: 0 !important;
+    border-bottom: 1px solid #f5f5f5;
+  }
+ 
+  #navbar li a {
+    display: block;
+    width: 100%;
+    padding: 18px 0;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #222 !important;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.2s, background 0.2s;
+  }
+ 
+  #navbar li a:hover,
+  #navbar li a.active {
+    color: #088178 !important;
+    background: #f0faf9;
+  }
+ 
+  /* Remove underline pseudo-element */
+  #navbar li a::after {
+    display: none !important;
+  }
+ 
+  /* Cart inside navbar */
+  #navbar .nav-cart {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0 10px 0 !important;
+    border-bottom: none !important;
+  }
+ 
+  #navbar .nav-cart a i {
+    font-size: 26px !important;
+    color: #088178 !important;
+  }
+ 
+  /* Close (X) button — top right corner of the open menu */
+  #close {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: fixed !important;
+    top: 16px !important;
+    right: 16px !important;
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 22px !important;
+    color: #333 !important;
+    background: #f0f0f0 !important;
+    border-radius: 50% !important;
+    cursor: pointer;
+    z-index: 10000 !important;
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+  }
+ 
+  #close:hover {
+    background: #088178 !important;
+    color: #fff !important;
+  }
+ 
+  /* Mobile top bar — hamburger + cart */
+  #mobile {
+    display: flex !important;
+    align-items: center;
+    gap: 18px;
+  }
+ 
+  #mobile a i,
+  #mobile i {
+    font-size: 22px;
+    color: #222;
+    cursor: pointer;
+  }
+ 
+  #bar {
+    font-size: 26px;
+    cursor: pointer;
+    color: #222;
+  }
+}
+ 
