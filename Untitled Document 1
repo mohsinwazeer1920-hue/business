@@ -1,0 +1,84 @@
+muhammad-mohsin-lbhq@muhammadmohsinlbhq:~$ cd /etc/apache2/sites-available/       /* ya first line ha jahan sa virtual host bnana shro krta han
+
+
+ammadmohsinlbhq:/etc/apache2/sites-available$   ll
+total 28     
+drwxr-xr-x 2 root root 4096 Mar 31 15:01 ./
+drwxr-xr-x 8 root root 4096 Mar 26 14:46 ../
+-rw-r--r-- 1 root root  317 Mar 30 17:02 000-default.conf
+-rw-r--r-- 1 root root 6338 Mar 18  2024 default-ssl.conf
+-rw-r--r-- 1 root root  354 Mar 30 19:39 firstwordpress.local.conf
+-rw-r--r-- 1 root root  390 Mar 31 15:01 gulahmed.local.conf
+
+
+
+ls *************** ya sara folder dikhata ha ka kon kon sa folder han yahan pr
+
+
+cd *************** ya hama kisi bhi folder ka andar la jata ha 
+
+
+cd .. ************  ya jo cd ka bad dots han is ki madad sa ham move back kr skta han jahan bhi honga us ka piche wala folder ma chla jaen ga yani uska parent folder i think.
+
+
+
+//////////////// virtual host ka tarika //////////////////
+
+///step 1:folder bnao:
+
+sudo mkdir -p /var/www/midcity
+
+///permission set karo:
+
+sudo chown -R $USER:$USER /var/www/midcity
+
+///test file bnao: 
+
+echo "<h1>Midcity Working ✅</h1>" > /var/www/midcity/index.html
+
+///step 2:virtual host file bnao
+
+sudo nano /etc/apache2/sites-available/midcity.conf
+
+///isma ya code add kro:
+
+<VirtualHost *:80>
+    ServerName midcity.local
+    DocumentRoot /var/www/midcity
+
+    <Directory /var/www/midcity>
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/midcity_error.log
+    CustomLog ${APACHE_LOG_DIR}/midcity_access.log combined
+</VirtualHost>
+
+//save krdo
+
+
+///step 3:site enable kro
+
+sudo a2ensite midcity.conf
+
+///step 4:host file ma entry kro
+
+sudo nano /etc/hosts
+
+///niche ya line add kr or phir save and exit
+
+127.0.0.1 midcity.local
+
+///step 5:apache reload kro 
+
+sudo systemctl reload apache2
+
+/////bss ab jis ka name ki virtual host ha usi name ko browser ma lkso or virtual host bn gai
+
+//////////////////////xxxxxxxxxxxxxxxxxxxx//////////////////////////xxxxxxxxxxxxxxxxxxx
+
+
+
+https://youtu.be/DSU9DlcDu90?si=1HIy0uAEOfNxZqZM
+
