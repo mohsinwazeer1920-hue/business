@@ -39,400 +39,172 @@
             <h6>F24/7 Support</h6>
         </div>
     </section>
-    
-    <section id="product1" class="section-p1">
-     <h2>Featured Products</h2>
-     <p>Summer Collection New Modern Design</p>
-     
-     <div class="pro-container">
+   <?php 
+  // ================================================
+// FEATURED PRODUCTS SECTION
+// Yeh apne front-page.php mein pehle section#product1 ki jagah paste karo
+// ================================================
+?>
+ 
+<section id="product1" class="section-p1">
+    <h2>Featured Products</h2>
+    <p>Summer Collection New Modern Design</p>
+ 
+    <div class="pro-container">
+        <?php
+            $featured_products = new WP_Query(array(
+                'post_type'      => 'product',
+                'posts_per_page' => 8,
+                'meta_query'     => array(
+                    array(
+                        'key'     => 'featured_product',
+                        'value'   => '1',
+                        'compare' => '=',
+                    ),
+                ),
+            ));
+        ?>
+ 
+        <?php while ($featured_products->have_posts()) : $featured_products->the_post();
+            setup_postdata($post);
+ 
+            $price   = get_post_meta(get_the_ID(), 'price', true);
+            $brand   = get_post_meta(get_the_ID(), 'brand', true);
+            $rating  = get_post_meta(get_the_ID(), 'rating', true);
+            $rating  = $rating ? (int)$rating : 5;
+ 
+            $thumb_id  = get_post_thumbnail_id(get_the_ID());
+            $thumb_url = wp_get_attachment_image_url($thumb_id, 'medium');
+        ?>
+ 
         <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f1 (1).jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Cartoon Astrounaut T-Shirts</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$78</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-        data-id="f1"
-        data-name="Cartoon Astronaut T-Shirt"
-        data-price="78"
-        data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f1 (1).jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-        <div class="pro">
-           <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f2.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Oxford Shirts</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$78</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-        data-id="f1"
-        data-name="Cartoon Astronaut T-Shirt"
-        data-price="78"
-        data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f2.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f3.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Oxford Shirts</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$80</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-        data-id="f3"
-        data-name="Oxford Shirts"
-        data-price="80"
-             data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f3.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f4.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Dress Shirts</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$82</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-        data-id="f4"
-        data-name="Dress Shirts"
-        data-price="82"
-        data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f4.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f5.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Short-Sleeve Shirt</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$85</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-        data-id="f5"
-        data-name="Short-Sleeve Shirt"
-        data-price="85"
-        data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f5.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f6.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Cuban Collar Shirt</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$88</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-        data-id="f6"
-        data-name="Cuban Collar Shirt"
-        data-price="88"
-        data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f6.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f7.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Polo paint</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$90</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-     data-id="f7"
-     data-name="Polo paint"
-     data-price="90"
-     data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f7.jpg">
-     <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f8.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>(Fabric) Shirt</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$92</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-        data-id="f8"
-        data-name="(Fabric) Shirt"
-        data-price="90"
-        data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/f8.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-     </div>
-     <p class="no-result">No products found 😔</p>
-
-    </section>
-
-    
-    <section id="banner" class="section-m1">
-        <h4>Repair Services</h4>
-        <h2>Up to <span>70% Off</span> All t-Shirts & Accessories</h2>
-        <button class="normal">Explore More</button>
-    </section>
-
-    <section id="product1" class="section-p1" >
-     <h2>All Products</h2>
-     <p>Summer Collection New Modern Design</p>
-     <div class="pro-container">
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n1.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Flannel shirt </h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-         1           <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$92</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-        data-id="n1"
-       data-name="Flannel shirt "
-        data-price="92"
-        data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n1.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n2.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Checkered Shirt</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$95</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-        data-id="n2"
-        data-name="Checkered Shirt"
-        data-price="95"
-        data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/product/n2.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n3.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Formal shirt</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$98</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-        data-id="n3"
-        data-name="Formal shirt"
-        data-price="98"
-        data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n3.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-     </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n4.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Denim shirt</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$99.5</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-            data-id="n4"
-            data-name="Denim shirt"
-            data-price="99.5"
-            data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n4.jpg">
-            <i class="fa-solid fa-cart-shopping"></i>
-         </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n5.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Corduroy shirt</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$100</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-         data-id="n5"
-       data-name="Corduroy shirt"
-        data-price="100"
-       data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n5.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-        </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n6.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Oxford Paint</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$102</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-                data-id="n6"
-           data-name="Oxford paint"
-         data-price="102"
-        data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n6.jpg">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n7.jpg">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Chambray shirt</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$104</h4>
-            </div>
-            <a href="#" class="add-to-cart"
-         data-id="n7"
-       data-name="Chambray shirt"
-      data-price="104"
-       data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n7.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
+ 
+            <a href="<?php the_permalink(); ?>">
+                <?php if ($thumb_url) : ?>
+                    <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title_attribute(); ?>">
+                <?php endif; ?>
             </a>
-
-        </div>
-        <div class="pro">
-            <img src="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n8.jpg">
+ 
             <div class="des">
-                <span>adidas</span>
-                <h5>Linen shirt</h5>
+                <span><?php echo esc_html($brand); ?></span>
+                <h5>
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                </h5>
                 <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <?php for ($i = 1; $i <= 5; $i++) {
+                        echo $i <= $rating
+                            ? '<i class="fas fa-star"></i>'
+                            : '<i class="far fa-star"></i>';
+                    } ?>
                 </div>
-                <h4>$105</h4>
+                <h4>$<?php echo esc_html($price); ?></h4>
             </div>
-            <a href="#" class="add-to-cart"
-            data-id="n8"
-         data-name="Linen shirt"
-        data-price="105"
-         data-image="<?php echo get_template_directory_uri(); ?>/beginner/assets/img/products/n8.jpg">
-        <i class="fa-solid fa-cart-shopping"></i>
-       </a>
-
+ 
+            <a href="<?php the_permalink(); ?>" class="add-to-cart"
+                data-id="<?php echo get_the_ID(); ?>"
+                data-name="<?php the_title_attribute(); ?>"
+                data-price="<?php echo esc_attr($price); ?>"
+                data-image="<?php echo esc_url($thumb_url); ?>">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+ 
         </div>
-     </div>
-     <p  class="no-result">No products found 😔</p>
+ 
+        <?php endwhile; ?>
+        <?php wp_reset_postdata(); ?>
+ 
+    </div>
+    <p class="no-result" style="display:none;">No products found 😔</p>
+</section>
+ 
+ 
+<?php
+// ================================================
+// BANNER SECTION - same rehne do
+// ================================================
+?>
+<section id="banner" class="section-m1">
+    <h4>Repair Services</h4>
+    <h2>Up to <span>70% Off</span> All t-Shirts & Accessories</h2>
+    <button class="normal">Explore More</button>
+</section>
+ 
 
-    </section>
+<!-- ================== Latest Products ================== -->
+
+<section id="product1" class="section-p1">
+    <h2>Latest Products</h2>
+    <p>Newly Added Products</p>
+
+    <div class="pro-container">
+
+        <?php
+        $latest_products = new WP_Query(array(
+            'post_type'      => 'product',
+            'posts_per_page' => 8,
+            'orderby'        => 'date',
+            'order'          => 'DESC'
+        ));
+        ?>
+
+        <?php if ($latest_products->have_posts()) : ?>
+            <?php while ($latest_products->have_posts()) : $latest_products->the_post();
+
+                $price   = get_post_meta(get_the_ID(), 'price', true);
+                $brand   = get_post_meta(get_the_ID(), 'brand', true);
+                $rating  = get_post_meta(get_the_ID(), 'rating', true);
+                $rating  = $rating ? (int)$rating : 5;
+                
+                $category = get_post_meta(get_the_ID(), 'product_category', true);
+                $thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+            ?>
+
+            <div class="pro" data-category="<?php echo esc_attr(strtolower($category)); ?>">
+
+                <a href="<?php the_permalink(); ?>">
+                    <?php if ($thumb_url) : ?>
+                        <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title_attribute(); ?>">
+                    <?php endif; ?>
+                </a>
+
+                <div class="des">
+                    <span><?php echo esc_html($brand); ?></span>
+
+                    <h5>
+                        <a href="<?php the_permalink(); ?>">
+                            <?php the_title(); ?>
+                        </a>
+                    </h5>
+
+                    <div class="star">
+                        <?php for ($i = 1; $i <= 5; $i++) {
+                            echo $i <= $rating
+                                ? '<i class="fas fa-star"></i>'
+                                : '<i class="far fa-star"></i>';
+                        } ?>
+                    </div>
+
+                    <h4>$<?php echo esc_html($price); ?></h4>
+                </div>
+
+                <a href="<?php the_permalink(); ?>" class="add-to-cart"
+                    data-id="<?php echo get_the_ID(); ?>"
+                    data-name="<?php the_title_attribute(); ?>"
+                    data-price="<?php echo esc_attr($price); ?>"
+                    data-image="<?php echo esc_url($thumb_url); ?>">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+
+            </div>
+
+            <?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>
+        <?php endif; ?>
+
+    </div>
+
+    <p class="no-result" style="display:none;">No products found 😔</p>
+</section>
 
     <section id="sm-banner" class="section-p1">
         <div class="banner-box">
@@ -470,9 +242,8 @@
             <p>Get E-mail Updates about our latest Shop and <span>Special offers</span></p>
         </div>
         <div class="form">
-            <input type="text" placeholder="Your email address">
-            <button class="normal">Sign Up</button>
-        </div>
+        <?php echo do_shortcode('[contact-form-7 id="1ece48a" title="newsletter"]'); ?>
+    </div>
     </section>
 
 <?php get_footer(); ?>
